@@ -4,16 +4,16 @@ import com.baconfinder.bacon_degrees.model.User;
 import com.baconfinder.bacon_degrees.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/api/")
-public class ApiControllers {
+@RequestMapping("/api/users")
+public class UserController {
 
     private final UserService userService;
 
-    public ApiControllers(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -36,6 +36,4 @@ public class ApiControllers {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
-
-
 }
