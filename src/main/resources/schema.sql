@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS name_basics;
 CREATE TABLE IF NOT EXISTS name_basics (
     nconst VARCHAR(255) PRIMARY KEY,
     primaryName VARCHAR(255),

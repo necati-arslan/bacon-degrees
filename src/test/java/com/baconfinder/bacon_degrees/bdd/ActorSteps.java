@@ -43,4 +43,27 @@ public class ActorSteps {
                         containsString("tt0000001")
                 ));
     }
+
+
+
+
+    @Then("the response should be not found")
+    public void verifyNotFound() {
+        given()
+                .spec(RestAssured.requestSpecification)
+                .when()
+                .get("/{nconst}")
+                .then()
+                .statusCode(404);
+    }
+
+    @Then("the response status should be $status")
+    public void verifyStatus(int status) {
+        given()
+                .spec(RestAssured.requestSpecification)
+                .when()
+                .get("/{nconst}")
+                .then()
+                .statusCode(status);
+    }
 }

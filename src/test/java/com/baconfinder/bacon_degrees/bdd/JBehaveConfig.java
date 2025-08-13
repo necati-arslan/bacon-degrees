@@ -17,7 +17,6 @@ public class JBehaveConfig {
                 .useStoryReporterBuilder(new StoryReporterBuilder()
                         .withDefaultFormats()
                         .withFormats(Format.CONSOLE, Format.TXT, Format.HTML)
-                        .withRelativeDirectory("jbehave-reports"))
-                .useParameterControls(new ParameterControls().useDelimiterNamedParameters(true));
+                        .withRelativeDirectory("jbehave-reports"));
     }
 }
