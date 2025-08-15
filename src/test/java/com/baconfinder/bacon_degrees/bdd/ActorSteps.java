@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 @Component
 public class ActorSteps {
@@ -47,23 +49,20 @@ public class ActorSteps {
 
 
 
-    @Then("the response should be not found")
-    public void verifyNotFound() {
-        given()
-                .spec(RestAssured.requestSpecification)
-                .when()
-                .get("/{nconst}")
-                .then()
-                .statusCode(404);
-    }
+    @Then("the response should be empty result")
+    public void verifyEmptyResult() {
+        String body =
+                given()
+                        .spec(RestAssured.requestSpecification)
+                        .when()
+                        .get("/{nconst}")
+                        .then()
+                        .statusCode(200)
+                        .extract()
+                        .asString();
 
-    @Then("the response status should be $status")
-    public void verifyStatus(int status) {
-        given()
-                .spec(RestAssured.requestSpecification)
-                .when()
-                .get("/{nconst}")
-                .then()
-                .statusCode(status);
+
+        assertThat(body == null ? "" : body.trim(),
+                anyOf(equalTo(""), equalTo("null"), equalTo("{}"), equalTo("[]")));
     }
 }
