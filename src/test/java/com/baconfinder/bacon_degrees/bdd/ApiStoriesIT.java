@@ -26,7 +26,7 @@ import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 public class ApiStoriesIT {
-    
+
     @Autowired
     ApplicationContext applicationContext;
 
