@@ -21,23 +21,12 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 
-@Testcontainers
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 public class ApiStoriesIT {
-
-    // MySQL 8 Testcontainers
-    static final MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.4.0");
-
-    @DynamicPropertySource
-    static void registerProps(DynamicPropertyRegistry r) {
-        mysql.start();
-        r.add("spring.datasource.url", mysql::getJdbcUrl);
-        r.add("spring.datasource.username", mysql::getUsername);
-        r.add("spring.datasource.password", mysql::getPassword);
-    }
-
+    
     @Autowired
     ApplicationContext applicationContext;
 
