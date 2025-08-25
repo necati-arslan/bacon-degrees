@@ -106,19 +106,43 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${failsafe.version}</version>
-                <executions>
+
+                          <executions>
+
+                    <!-- Non-RL: profiles=test, port=8080 -->
                     <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
+                        <id>it-non-rl</id>
+                        <goals><goal>integration-test</goal><goal>verify</goal></goals>
                         <configuration>
                             <includes>
-                                <include>**/*IT.java</include>
-                                <include>**/*ITCase.java</include>
+                                <include>**/AllStoriesIT.java</include>
+
                             </includes>
+                            <excludes>
+                                <exclude>**/ApiRateLimitStoriesIT.java</exclude>
+                            </excludes>
+                            <systemPropertyVariables>
+                                <spring.profiles.active>test</spring.profiles.active>
+                                <server.port>8080</server.port>
+                            </systemPropertyVariables>
                         </configuration>
                     </execution>
+
+                    <!-- RL: profiles=test,rl, port=8081 -->
+                    <execution>
+                        <id>it-rl</id>
+                        <goals><goal>integration-test</goal><goal>verify</goal></goals>
+                        <configuration>
+                            <includes>
+                                <include>**/ApiRateLimitStoriesIT.java</include>
+                            </includes>
+                            <systemPropertyVariables>
+                                <spring.profiles.active>test,rl</spring.profiles.active>
+                                <server.port>8081</server.port>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
 

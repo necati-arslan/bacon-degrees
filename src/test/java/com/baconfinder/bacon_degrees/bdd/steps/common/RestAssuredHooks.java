@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class RestAssuredHooks {
     @BeforeScenario
-    public void reset() {
-        RestAssured.reset();
+    public void before() {
+        RestAssured.baseURI = "http://localhost";
+        RestAssured.port = Integer.parseInt(System.getProperty("server.port", "8080"));
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 }

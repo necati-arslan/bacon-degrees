@@ -4,6 +4,7 @@ import com.baconfinder.bacon_degrees.bdd.config.BaseStoriesIT;
 
 import java.util.List;
 
+@org.junit.jupiter.api.Disabled
 public class SmokeStoriesIT extends BaseStoriesIT {
     @Override
     protected List<String> metaFilters() {

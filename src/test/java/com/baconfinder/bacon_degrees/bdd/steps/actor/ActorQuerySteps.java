@@ -20,12 +20,6 @@ public class ActorQuerySteps {
 
     private Response response;
 
-    @BeforeScenario
-    public void before() {
-        RestAssured.baseURI = "http://localhost";
-        RestAssured.port = 8080;
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-    }
 
 
     @Given("the API base is running")
