@@ -30,7 +30,7 @@ public class ActorQuerySteps {
 
     @Given("the API base is running")
     public void apiBase() {
-        // Optionally ping a health endpoint or just rely on SpringBootTest. (İsterseniz bir sağlık uç noktasını ping’leyin veya SpringBootTest’e güvenin.)
+
     }
 
     @When("I request actor by nconst '$nconst'")
